@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+   <div class="jumbotron text-center">
+       <h1>Bienvenue Ta Clé </h1>
+       <h2>Votre logement est unique, nous en prenons soin.</h2>
+       <h2> Chez Ta Clé, nous gérons des biens uniques au coeur des villes, pour nos clients propriétaires : création et gestion d’annonce sur Airbnb, Booking... photos professionnelles, yield management, services de conciergerie haut de gamme (ménage, linge, et maintenance).  </h2>
+   </div>
+
+
+
+    <div class="container">
+        <h2>Les derniers biens</h2>
+        <div class = "row flex">
+            {% for property in properties %}
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ path('property.show',{id: property.id, slug: property.slug}) }}">{{ property.title }}</a>
+                            </h5>
+                            <p class="card-text">{{ property.city }} ({{ property.postalCode }})</p>
+                            <div class ="text-primary" style="font-weight: bold;font-size:2rem;">{{ property.formattedPrice}} €/nuits </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <div class="jumbotron text-center">
+        <h1>Une gestion complète </h1>
+        <ul>
+            <li style="font-size: 30px;">État des lieux et signature du bail</li>
+            <li style="font-size: 30px;">Ménage et linge entre deux locations</li>
+            <li style="font-size: 30px;">Gestion de la maintenance</li>
+            <li style="font-size: 30px;">Service clients dédié</li>
+        </ul>
+    </div>
+{% endblock %}
